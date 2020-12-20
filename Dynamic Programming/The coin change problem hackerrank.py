@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'getWays' function below.
 #
@@ -14,30 +15,35 @@ import sys
 #  1. INTEGER n
 #  2. LONG_INTEGER_ARRAY c
 #
-
+# to print array
 def printarr(a):
     for r in a:
         print(r)
 
+
 def getWays(n, c):
-    arr=[]
+    #initialize 2D List
+    arr = []
     for i in range(len(c)):
         col = []
-        for j in range(n+1):
+        for j in range(n + 1):
             col.append(0)
         arr.append(col)
+    #Dynamic programing
     for i in range(len(c)):
-        arr[i][0]=1
+        arr[i][0] = 1
     for i in range(len(c)):
-        for j in range(n+1):
+        for j in range(n + 1):
             if j < c[i]:
-                arr[i][j]=arr[i-1][j]
+                arr[i][j] = arr[i - 1][j]
             else:
-                arr[i][j]=arr[i-1][j]+arr[i][j-c[i]]
-    #printarr(arr)
+                arr[i][j] = arr[i - 1][j] + arr[i][j - c[i]]
+    # printarr(arr)
     return arr[i][j]
+
+
 if __name__ == '__main__':
-    #fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    # fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     first_multiple_input = input().rstrip().split()
 
